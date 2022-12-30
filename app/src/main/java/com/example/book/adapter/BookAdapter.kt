@@ -17,21 +17,28 @@ class BookAdapter(
 
     private var bookList: ArrayList<BookModel>,
     private var context: Context
-) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
+) : RecyclerView.Adapter<BookAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BookViewHolder {
+    ): ViewHolder {
 
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.activity_item,
             parent, false
         )
 
-        return BookViewHolder(itemView)
+        return ViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val bookTitle: TextView = itemView.findViewById(R.id.BookName)
+        val bookPages: TextView = itemView.findViewById(R.id.BookPages)
+        val book: ImageView = itemView.findViewById(R.id.Book)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val bookInfo = bookList.get(position)
 
         Picasso.get().load(bookInfo.thumbnail).into(holder.book);
@@ -50,9 +57,7 @@ class BookAdapter(
             i.putExtra("description", bookInfo.description)
             i.putExtra("pageCount", bookInfo.pageCount)
             i.putExtra("thumbnail", bookInfo.thumbnail)
-            i.putExtra("previewLink", bookInfo.previewLink)
-            i.putExtra("infoLink", bookInfo.infoLink)
-            i.putExtra("buyLink", bookInfo.buyLink)
+
 
 
             context.startActivity(i)
@@ -71,10 +76,5 @@ class BookAdapter(
 
 
 
-    class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val bookTitle: TextView = itemView.findViewById(R.id.BookName)
-        val bookPages: TextView = itemView.findViewById(R.id.BookPages)
-        val book: ImageView = itemView.findViewById(R.id.Book)
-    }
 }

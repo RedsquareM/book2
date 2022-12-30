@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
         val queue = Volley.newRequestQueue(this@MainActivity)
 
-        
+
         val request = JsonObjectRequest(Request.Method.GET, url, null, { response ->
             loading.visibility = View.GONE
 
@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                     val adapter = BookAdapter(booksList, this@MainActivity)
 
 
-                    val layoutManager = GridLayoutManager(this, 3)
+                    val layoutManager = GridLayoutManager(this, 8)
                     val mRecyclerView = findViewById<RecyclerView>(R.id.RecyleViewBooks)
 
 

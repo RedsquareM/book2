@@ -49,7 +49,7 @@ class BookActivity : AppCompatActivity() {
         val pageCount: Int = intent.getIntExtra("pageCount", 0)
         val thumbnail: String? = intent.getStringExtra("thumbnail")
         val previewLink = intent.getStringExtra("previewLink")
-        val buyLink = intent.getStringExtra("buyLink")
+        //val buyLink = intent.getStringExtra("buyLink")  
 
 
         publisherDate.text = "Published On : $publishedDate"
@@ -62,7 +62,7 @@ class BookActivity : AppCompatActivity() {
             if (previewLink.isNullOrEmpty()) {
                 Toast.makeText(
                     this@BookActivity,
-                    "No Link ",
+                    "Nothing to Display ",
                     Toast.LENGTH_SHORT
                 )
                     .show()
@@ -74,20 +74,7 @@ class BookActivity : AppCompatActivity() {
         }
 
 
-        buyBtn.setOnClickListener {
-            if (buyLink.isNullOrEmpty()) {
 
-                Toast.makeText(
-                    this@BookActivity,
-                    "This page does not exist",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            val uri = Uri.parse(buyLink)
-            val i = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(i)
-        }
 
     }
 }
