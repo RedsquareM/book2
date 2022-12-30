@@ -65,10 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         val queue = Volley.newRequestQueue(this@MainActivity)
 
-        // and initializing it with json object request
+        
         val request = JsonObjectRequest(Request.Method.GET, url, null, { response ->
             loading.visibility = View.GONE
-            // extracting json data.
+
             try {
                 val itemsArray = response.getJSONArray("items")
                 for (i in 0 until itemsArray.length()) {
