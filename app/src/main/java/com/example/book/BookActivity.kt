@@ -52,9 +52,6 @@ class BookActivity : AppCompatActivity() {
         val buyLink = intent.getStringExtra("buyLink")
 
 
-        //title.setText(description)
-        //subtitle.setText(subtitle)
-        //publisher.setText(publisher)
         publisherDate.text = "Published On : $publishedDate"
         desc.text = description
         page.text = "No Of Pages : $pageCount"
